@@ -20,6 +20,7 @@
   Call the index.js file using node in the console. Answer all prompted questions about your desired logo design. Once all questions are answered a logo.svg file will be generated in the "examples" folder.
 
   ## Demo
+  [Untitled_ Aug 15, 2023 1_18 PM.webm](https://github.com/ChazCoats98/Chaz-Coats-SVG-Logo-Maker/assets/134428862/38fe2998-d658-4537-ad09-9542fc2b0acd)
 
   ## License
   This project is licensed under the MIT license.
