@@ -1,6 +1,7 @@
-var inquirer = require("inquirer");
+var inquirer = import("inquirer");
 var jest = require("jest");
 var {circle, triangle, square} = require("./lib/shapes");
+var fs = require("fs");
 
 const questions = [
     {
@@ -26,23 +27,31 @@ const questions = [
     }
 ]
 
+function writeToFile(filename, data) {
+fs.writeFile(filename, data, function(err) {
+    if (err) {
+        return console.log("error");
+    }
+})
+}
 
-
-function shapeRender() {
-    inquirer.prompt(questions).then(function(response) {
-        if (response.shape === "circle") {
-            let svgLogo = new circle(response.text, response.textColor, response.shapeColor);
-            return svgLogo.render()
+async function shapeRender() {
+    inquirer.prompt(questions).then(function(data) {
+        if (data.shape === "circle") {
+            let svgCircle = new circle(response.text, response.textColor, response.shapeColor);
+            writeToFile("./examples/logo.svg", svgCircle.render())
         }
 
-        if (response.shape === "triangle") {
-            let svgLogo = new triangle(response.text, response.textColor, response.shapeColor);
-            return svgLogo.render()
+        if (data.shape === "triangle") {
+            let svgTriangle = new triangle(response.text, response.textColor, response.shapeColor);
+            writeToFile("./examples/logo.svg", svgTriangle.render())
         }
 
-        if (response.shape === "square") {
-            let svgLogo = new square(response.text, response.textColor, response.shapeColor);
-            return svgLogo.render()
+        if (data.shape === "square") {
+            let svgSquare = new square(response.text, response.textColor, response.shapeColor);
+            writeToFile("./examples/logo.svg", svgSquare.render())
         }
     });
 }
+
+shapeRender();
